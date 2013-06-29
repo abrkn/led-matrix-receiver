@@ -1,8 +1,9 @@
-CFLAGS=-Wall -O3 -g
-CXXFLAGS=-Wall -O3 -g
+CFLAGS=-Wall -O3 -g -Wextra
+CXXFLAGS=-Wall -O3 -g $(LIBS)
 OBJECTS=main.o gpio.o led-matrix.o thread.o
 BINARIES=led-matrix
 LDFLAGS=-lrt -lm -lpthread
+LIBS=-lboost_system -lSDL -lSDL_image
 
 all : $(BINARIES)
 

@@ -90,14 +90,16 @@ void RGBMatrix::SetPixel(uint8_t x, uint8_t y,
   //                                         [<] [<]
   // So we have up to column 64 one direction, then folding around. Lets map
   // that backward
+  /*
   if (y > 31) {
     x = 127 - x;
     y = 63 - y;
   }
-  
+  */
+
   // TODO: re-map values to be luminance corrected (sometimes called 'gamma').
   // Ideally, we had like 10PWM bits for this, but we're too slow for that :/
-  
+
   // Scale to the number of bit planes we actually have, so that MSB matches
   // MSB of PWM.
   red   >>= 8 - kPWMBits;
@@ -128,7 +130,7 @@ void RGBMatrix::UpdateScreen() {
   IoBits row_mask;
   row_mask.bits.row = 0xf;
 
-  IoBits clock, output_enable, strobe;    
+  IoBits clock, output_enable, strobe;
   clock.bits.clock = 1;
   output_enable.bits.output_enable = 1;
   strobe.bits.strobe = 1;

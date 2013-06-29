@@ -21,15 +21,15 @@
 #define GPIO_SET *(gpio+7)  // sets   bits which are 1 ignores bits which are 0
 #define GPIO_CLR *(gpio+10) // clears bits which are 1 ignores bits which are 0
 
-/*static*/ const uint32_t GPIO::kValidBits 
+/*static*/ const uint32_t GPIO::kValidBits
 = ((1 <<  2) | (1 <<  3) | (1 <<  4) | (1 <<  7)| (1 << 8) | (1 <<  9) |
    (1 << 10) | (1 << 11) | (1 << 14) | (1 << 15)| (1 <<17) | (1 << 18)|
    (1 << 22) | (1 << 23) | (1 << 24) | (1 << 25)| (1 << 27));
-   
+
 
 GPIO::GPIO() : output_bits_(0), gpio_port_(NULL) {
 }
-   
+
 uint32_t GPIO::InitOutputs(uint32_t outputs) {
   if (gpio_port_ == NULL) {
     fprintf(stderr, "Attempt to init outputs but initialized.\n");
